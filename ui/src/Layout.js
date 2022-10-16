@@ -1,0 +1,84 @@
+import React, { useEffect, useState } from 'react'
+
+import CssBaseline from '@mui/material/CssBaseline'
+import AppBar from '@mui/material/AppBar'
+import Toolbar from '@mui/material/Toolbar'
+import Typography from '@mui/material/Typography'
+import Box from '@mui/material/Box'
+import Drawer from './components/Drawer'
+import LinearProgress from '@mui/material/LinearProgress'
+import ProviderPage from './pages/ProviderPage'
+import './App.css'
+
+const drawerWidth = 200
+
+//creates the application layout
+const Layout = () => {
+    const [hospitals, setHospitals] = useState([])
+    const [selectedProvider, setSelectedProvider] = useState(null)
+
+    useEffect(() => {
+        getHospitals()
+    }, [])
+
+    const getHospitals = () => {
+        fetch(process.env.REACT_APP_API_URL + '/hospitals/', {
+            method: 'GET',
+        })
+            .then((response) => response.json())
+            .then((hospitals) => {
+                setHospitals(hospitals)
+            })
+    }
+
+    if (hospitals) {
+        return (
+            <Box sx={{ display: 'flex' }}>
+                <CssBaseline />
+                <AppBar
+                    position="fixed"
+                    sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }} // always appear above the drawer
+                >
+                    <Toolbar>
+                        <Typography variant="h6" color="inherit" noWrap>
+                            Provider Patient Manager
+                        </Typography>
+                    </Toolbar>
+                </AppBar>
+
+                <Drawer
+                    items={hospitals}
+                    textKey="name"
+                    popOverKey="providers"
+                    tooltipKey="description"
+                    getPopOverText={(provider) =>
+                        `${provider.name} - ${provider.specialty}`
+                    }
+                    width={drawerWidth}
+                    onPopoverClick={(e, provider) => {
+                        setSelectedProvider(provider)
+                    }}
+                />
+                <Box
+                    component="main"
+                    sx={{ flexGrow: 1, p: 3, height: '100vh' }}
+                >
+                    <Toolbar />
+                    {selectedProvider && (
+                        <ProviderPage
+                            selectedProvider={selectedProvider}
+                            handleUpdateProvider={(updatedProvider) => {
+                                setSelectedProvider(updatedProvider)
+                                getHospitals()
+                            }}
+                        />
+                    )}
+                </Box>
+            </Box>
+        )
+    } else {
+        return <LinearProgress />
+    }
+}
+
+export default Layout

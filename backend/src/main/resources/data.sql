@@ -1,0 +1,45 @@
+insert into hospital (id, name, description) values (1, 'St. Joseph Mercy', 'St. Joseph Mercy Ann Arbor Hospital');
+insert into hospital (id, name, description) values (2, 'UM Hospital', 'University of Michigan Ann Arbor Hospital');
+insert into hospital (id, name, description) values (3, 'Henry Ford', null);
+
+insert into provider (id, name, specialty, hospital_id) values (1, 'Dr. Ned Higgins', 'Neurologists',1);
+insert into provider (id, name, specialty, hospital_id) values (2, 'Dr. Mary James', 'Radiologists',1);
+insert into provider (id, name, specialty, hospital_id) values (3, 'Dr. Robert Patterson', 'Anesthesiologists',2);
+insert into provider (id, name, specialty, hospital_id) values (4, 'Dr. Susan Richards', 'Pediatricians',1);
+insert into provider (id, name, specialty, hospital_id) values (5, 'Dr. Matthew Stockton', 'Cardiologists',2);
+insert into provider (id, name, specialty, hospital_id) values (6, 'Dr. John Marks', 'Cardiologists',3);
+
+insert into patient ( name, ssn, phone_number) values ('Dale Rodgers',      '778672467',    '2484588796');
+insert into patient ( name, ssn, phone_number) values ('Melissa Sanders',   '738616767',    '2485421147');
+insert into patient ( name, ssn, phone_number) values ('Harvey Penn',       '118633467',    '2483681884');
+insert into patient ( name, ssn, phone_number) values ('Shirley Temple',    '224475467',    '2486977149');
+insert into patient ( name, ssn, phone_number) values ('George Jagger',     '123475467',    '2484471281');
+insert into patient ( name, ssn, phone_number) values ('Dale Rodgers',      '657771117',    '2485625936');
+insert into patient ( name, ssn, phone_number) values ('Carla Moore',       '478111467',    '2482556315');
+insert into patient ( name, ssn, phone_number) values ('Emily Oakley',      '178615467',    '3136394885');
+insert into patient ( name, ssn, phone_number) values ('Rodgers Dale',      '278645467',    '3135242981');
+insert into patient ( name, ssn, phone_number) values ( 'Mark Adams',       '378672467',    '3138598097');
+insert into patient ( name, ssn, phone_number) values ( 'Hilary Stern',     '478117467',    '3135755857');
+insert into patient ( name, ssn, phone_number) values ( 'Colin Mills',      '578675547',    '3132737809');
+insert into patient ( name, ssn, phone_number) values ( 'Danielle Webber',  '678115467',    '3134539613');
+insert into patient ( name, ssn, phone_number) values ( 'Bernard Barratt',  '978623561',    '3139344320');
+
+insert into patient_provider (patient_id, provider_id) values (1,2);
+insert into patient_provider (patient_id, provider_id) values (1,5);
+insert into patient_provider (patient_id, provider_id) values (2,1);
+insert into patient_provider (patient_id, provider_id) values (3,5);
+insert into patient_provider (patient_id, provider_id) values (3,2);
+insert into patient_provider (patient_id, provider_id) values (4,1);
+insert into patient_provider (patient_id, provider_id) values (4,2);
+insert into patient_provider (patient_id, provider_id) values (5,1);
+insert into patient_provider (patient_id, provider_id) values (5,4);
+insert into patient_provider (patient_id, provider_id) values (6,2);
+insert into patient_provider (patient_id, provider_id) values (7,4);
+insert into patient_provider (patient_id, provider_id) values (8,3);
+insert into patient_provider (patient_id, provider_id) values (9,5);
+insert into patient_provider (patient_id, provider_id) values (10,1);
+insert into patient_provider (patient_id, provider_id) values (11,2);
+insert into patient_provider (patient_id, provider_id) values (12,3);
+insert into patient_provider (patient_id, provider_id) values (13,2);
+insert into patient_provider (patient_id, provider_id) values (13,4);
+insert into patient_provider (patient_id, provider_id) values (14,5);

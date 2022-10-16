@@ -1,4 +1,4 @@
-# Demo Healtchare Application
+# Demo Healthcare Patient Manager Application
 
 This single page application allows a user to explore providers at a given hospital, view their current patients list, and add patients to a selected provider.
 

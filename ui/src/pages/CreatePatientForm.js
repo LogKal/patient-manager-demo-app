@@ -25,6 +25,7 @@ const validationSchema = yup
     .required()
 
 const CreatePatientForm = ({ onCreatePatient }) => {
+    //setup react-hook-form
     const {
         register,
         handleSubmit,
@@ -34,6 +35,7 @@ const CreatePatientForm = ({ onCreatePatient }) => {
     const onSubmit = (newPatient) => {
         onCreatePatient(newPatient)
     }
+
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <Box

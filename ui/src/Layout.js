@@ -13,9 +13,13 @@ const drawerWidth = 200
 
 //creates the application layout
 const Layout = () => {
+    //list of hospitals used to load Drawers
     const [hospitals, setHospitals] = useState([])
+
+    //current provider in main
     const [selectedProvider, setSelectedProvider] = useState(null)
 
+    //on component mount get all hospitals from backend
     useEffect(() => {
         getHospitals()
     }, [])

@@ -21,8 +21,7 @@ public class ProviderService {
     }
     public Provider addNewPatient(Long providerId, Patient patient) throws Exception {
 
-        //need to check if patient already because they can belong to multiple providers
-
+        //need to check if patient already exists because they can belong to multiple providers
         Patient existingPatient = patientService.getBySsn(patient.getSsn());
         //use existing entity if they exist, otherwise new entity will be created
         if(existingPatient!=null) {

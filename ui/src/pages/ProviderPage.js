@@ -21,6 +21,7 @@ const modalStyle = {
 }
 
 const ProviderPage = ({ selectedProvider, handleUpdateProvider }) => {
+    //modal open/closed
     const [open, setOpen] = useState(false)
     const { enqueueSnackbar } = useSnackbar()
 
@@ -44,6 +45,7 @@ const ProviderPage = ({ selectedProvider, handleUpdateProvider }) => {
                     handleClose()
                     handleUpdateProvider(responseJson)
                     enqueueSnackbar('Successfully added user', {
+                        //add success to snackbar
                         variant: 'success',
                     })
                 }

@@ -8,7 +8,6 @@ import Box from '@mui/material/Box'
 import Drawer from './components/Drawer'
 import LinearProgress from '@mui/material/LinearProgress'
 import ProviderPage from './pages/ProviderPage'
-import './App.css'
 
 const drawerWidth = 200
 

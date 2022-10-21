@@ -9,7 +9,7 @@ There are two major elements to this application:
 
 ## Overview
 
-When the user makes a request to http://localhost:3000 they are met with a single page web application displaying available hospitals on the left.
+When the user makes a request to http://localhost:3000 (or the respective host IP) they are met with a single page web application displaying available hospitals on the left.
 
 Clicking on the hospital will display a list of providers.
 

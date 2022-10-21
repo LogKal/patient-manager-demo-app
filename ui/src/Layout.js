@@ -25,7 +25,7 @@ const Layout = () => {
     }, [])
 
     const getHospitals = () => {
-        fetch(process.env.REACT_APP_API_URL + '/hospitals/', {
+        fetch('/api/hospitals/', {
             method: 'GET',
         })
             .then((response) => response.json())

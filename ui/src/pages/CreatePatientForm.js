@@ -13,13 +13,13 @@ const validationSchema = yup
         phoneNumber: yup
             .string()
             .matches(
-                new RegExp('[0-9]{10}'),
+                new RegExp('^[0-9]{10}$'),
                 'Phone number must be 3 digit area code followed by 7 digit number'
             )
             .required(),
         ssn: yup
             .string()
-            .matches(new RegExp('[0-9]{9}'), 'SSN must be 9 digits')
+            .matches(new RegExp('^[0-9]{9}$'), 'SSN must be 9 digits')
             .required(),
     })
     .required()

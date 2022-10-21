@@ -29,14 +29,11 @@ const ProviderPage = ({ selectedProvider, handleUpdateProvider }) => {
     const handleClose = () => setOpen(false)
 
     const onCreatePatient = (newPatient) => {
-        fetch(
-            `${process.env.REACT_APP_API_URL}/providers/add-patient/${selectedProvider.id}`,
-            {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(newPatient),
-            }
-        )
+        fetch(`/api/providers/add-patient/${selectedProvider.id}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(newPatient),
+        })
             .then((response) => response.json())
             .then((responseJson) => {
                 if (responseJson.status && responseJson.status === 500) {

@@ -24,7 +24,7 @@ The new patient is added to the provider's patients.
 ## Docker-Compose Quick Start
 
 ```
-docker-compose -up --build
+docker-compose up --build
 ```
 Please note that the UI dockerfile contains the addition of an environment variable for the backend api url.
 
@@ -101,5 +101,5 @@ Test cases were created to test the controller endpoints using Junit v5 and Test
 - Patient can belong to multiple providers
 - Patient SSN is unique and every patient will have one
 - Patient phone number is always 10 digits(3 digit area code followed by 7 digits)
-- There is no application security, the backend api endpoints accept traffic from all origins and all request are permitted
+- There is no application security
 

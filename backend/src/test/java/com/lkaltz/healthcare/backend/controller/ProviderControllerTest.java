@@ -1,5 +1,6 @@
 package com.lkaltz.healthcare.backend.controller;
 
+import com.lkaltz.healthcare.backend.model.Hospital;
 import com.lkaltz.healthcare.backend.model.Patient;
 import com.lkaltz.healthcare.backend.model.Provider;
 import org.junit.jupiter.api.Test;
@@ -30,5 +31,11 @@ class ProviderControllerTest extends ControllerTestBase {
         //add existing ssn to existing provider
         ResponseEntity<String> response= restTemplate.postForEntity(getRequestUrl("/providers/add-patient/2"), newPatient, String.class);
         assertEquals(500,response.getStatusCode().value());
+    }
+
+    @Test
+    void getByProviderId() {
+        var provider = restTemplate.getForObject(getRequestUrl("/providers/find/1"), Provider.class);
+        assertNotNull(provider);
     }
 }

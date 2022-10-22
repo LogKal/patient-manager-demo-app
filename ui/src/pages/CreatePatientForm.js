@@ -5,6 +5,8 @@ import Box from '@mui/material/Box'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 import * as yup from 'yup'
+import { ErrorSharp } from '@mui/icons-material'
+import { useEffect } from 'react'
 
 //form validation
 const validationSchema = yup
@@ -45,7 +47,7 @@ const CreatePatientForm = ({ onCreatePatient }) => {
                     '& .MuiTextField-root': { m: 1 },
                 }}
             >
-                <TextField label="Name" {...register('name')} />
+                <TextField label="Name" {...register('name')} autoFocus />
                 <TextField label="Phone Number" {...register('phoneNumber')} />
                 <TextField label="SSN" {...register('ssn')} />
 

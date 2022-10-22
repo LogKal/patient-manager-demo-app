@@ -69,11 +69,7 @@ const Layout = () => {
                     <Toolbar />
                     {selectedProvider && (
                         <ProviderPage
-                            selectedProvider={selectedProvider}
-                            handleUpdateProvider={(updatedProvider) => {
-                                setSelectedProvider(updatedProvider)
-                                getHospitals()
-                            }}
+                            selectedProviderId={selectedProvider.id}
                         />
                     )}
                 </Box>

@@ -18,18 +18,29 @@ export const Drawer = ({
     getPopOverText,
     tooltipKey,
 }) => {
-    const [anchorEl, setAnchorEl] = useState(null)
-    const [selectedItem, setSelectedItem] = useState(null)
+    const [state, setState] = useState({
+        anchorEl: null,
+        selectedItem: null,
+        selectedId: null,
+    })
 
     const handleClick = (event, item) => {
-        setAnchorEl(event.currentTarget)
-        setSelectedItem(item)
+        setState({
+            ...state,
+            anchorEl: event.currentTarget,
+            selectedItem: item,
+        })
     }
 
-    const handleClose = () => {
-        setAnchorEl(null)
+    const handleClose = (selectedId) => {
+        setState({
+            ...state,
+            anchorEl: null,
+            selectedId: selectedId != null ? selectedId : state.selectedId,
+        })
     }
-    const open = Boolean(anchorEl)
+
+    const open = Boolean(state.anchorEl)
     const id = open ? 'simple-popover' : undefined
 
     return (
@@ -54,6 +65,13 @@ export const Drawer = ({
                             <ListItem
                                 key={item[textKey] + index}
                                 disablePadding
+                                sx={{
+                                    backgroundColor:
+                                        state.selectedId &&
+                                        state.selectedId === item.id
+                                            ? '#e7e7e7'
+                                            : null,
+                                }}
                             >
                                 <Tooltip
                                     title={item[tooltipKey]}
@@ -72,24 +90,29 @@ export const Drawer = ({
             <Popover
                 id={id}
                 open={open}
-                anchorEl={anchorEl}
-                onClose={handleClose}
+                anchorEl={state.anchorEl}
+                onClose={() => handleClose(null)}
                 anchorOrigin={{
                     vertical: 'top',
                     horizontal: 'right',
                 }}
             >
                 <List>
-                    {selectedItem &&
-                        selectedItem[popOverKey].map((i, ind) => (
-                            <ListItem key={'selectedItem' + ind} disablePadding>
+                    {state.selectedItem &&
+                        state.selectedItem[popOverKey].map((item, index) => (
+                            <ListItem
+                                key={'selectedItem' + index}
+                                disablePadding
+                            >
                                 <ListItemButton
-                                    onClick={(e) => {
-                                        onPopoverClick(e, i)
-                                        handleClose()
+                                    onClick={(event) => {
+                                        onPopoverClick(event, item)
+                                        handleClose(state.selectedItem.id)
                                     }}
                                 >
-                                    <ListItemText primary={getPopOverText(i)} />
+                                    <ListItemText
+                                        primary={getPopOverText(item)}
+                                    />
                                 </ListItemButton>
                             </ListItem>
                         ))}

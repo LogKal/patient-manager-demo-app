@@ -22,4 +22,9 @@ public class ProviderController {
         return providerService.addNewPatient(providerId,patient);
     }
 
+    @GetMapping("/find/{providerId}")
+    public Provider getByProviderId(@PathVariable Long providerId){
+        return providerService.getById(providerId);
+    }
+
 }
